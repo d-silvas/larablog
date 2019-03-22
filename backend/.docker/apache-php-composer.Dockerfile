@@ -21,3 +21,6 @@ COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN chown -R www-data:www-data /backend \
   && a2enmod rewrite \
   && mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+
+# PHP needed extensions
+RUN sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/g' /usr/local/etc/php/php.ini
