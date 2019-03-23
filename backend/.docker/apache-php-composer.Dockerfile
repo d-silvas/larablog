@@ -22,5 +22,5 @@ RUN chown -R www-data:www-data /backend \
   && a2enmod rewrite \
   && mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
-# PHP needed extensions
-RUN sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/g' /usr/local/etc/php/php.ini
+# PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql
