@@ -21,6 +21,8 @@ services:
     environment:
       MYSQL_DATABASE: app_db
       MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./database:/var/lib/mysql
     networks:
       - my_app_net
     command: mysqld --default-authentication-plugin=mysql_native_password
