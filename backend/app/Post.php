@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Support\Facades\Storage;
 
+use App\Category;
+
 class Post extends Model
 {
     use softDeletes;
@@ -17,7 +19,8 @@ class Post extends Model
         'content',
         'image',
         'created_at',
-        'published_at'
+        'published_at',
+        'category_id'
     ];
 
     /**
@@ -27,5 +30,10 @@ class Post extends Model
     public function deleteImage()
     {
         Storage::delete($this->image);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
