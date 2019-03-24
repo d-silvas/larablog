@@ -94,7 +94,7 @@ class PostsController extends Controller
             // Upload it
             $image = $request->image->store('posts');
             // Delete old one
-            Storage::delete($post->image);
+            $post->deleteImage();
 
             $data['image'] = $image;
         }
@@ -120,7 +120,7 @@ class PostsController extends Controller
         // firstOrFail(): automatically shows 404 if the post doesn't exist
         $post = Post::withTrashed()->where('id', $id)->firstOrFail();
         if ($post->trashed()) {
-            Storage::delete($post->image);
+            $post->deleteImage();
             $post->forceDelete();
         } else {
             $post->delete();
@@ -137,8 +137,22 @@ class PostsController extends Controller
     public function trashed()
     {
         // TODO: don't show the non-trashed
-        $trashed = Post::withTrashed()->get();
+        $trashed = Post::onlyTrashed()->get();
         // dynamic method, same as ->with('posts', $trashed)
         return view('posts.index')->withPosts($trashed);
+    }
+
+    /**
+     * Restore a trashed post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        // Can't use route model binding (as with destroy)
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+        $post->restore();
+        session()->flash('success', 'Post restored successfully');
+        return redirect()->back();
     }
 }
