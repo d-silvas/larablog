@@ -34,7 +34,11 @@
                         <a href="" class="btn btn-info btn-sm">Edit</a>
                     </td>
                     <td>
-                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
