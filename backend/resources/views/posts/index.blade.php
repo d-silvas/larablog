@@ -16,11 +16,28 @@
     <div class="card-body">
         <table class="table">
             <thead>
-                <th>Name</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th></th>
                 <th></th>
             </thead>
             <tbody>
-                
+                @foreach($posts as $post)
+                <tr>
+                    <td>
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="" style="height:60px;max-height:60px;">
+                    </td>
+                    <td>
+                        {{ $post->title }}
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-info btn-sm">Edit</a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
