@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Posts\CreatePostsRequest;
 use App\Post;
 
+use Illuminate\Support\Facades\Storage;
+
 class PostsController extends Controller
 {
     /**
@@ -93,10 +95,32 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
+        // NOTE: route model binding won't find the post if it is soft-deleted in the DB!
+        // So we fall back to using the id instead
+        // firstOrFail(): automatically shows 404 if the post doesn't exist
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+        if ($post->trashed()) {
+            Storage::delete($post->image);
+            $post->forceDelete();
+        } else {
+            $post->delete();
+        }
         session()->flash('success', 'Post trashed successfully');
         return redirect(route('posts.index'));
+    }
+
+    /**
+     * Display a list of trashed posts
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        // TODO: don't show the non-trashed
+        $trashed = Post::withTrashed()->get();
+        // dynamic method, same as ->with('posts', $trashed)
+        return view('posts.index')->withPosts($trashed);
     }
 }
