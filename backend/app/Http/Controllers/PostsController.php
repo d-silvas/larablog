@@ -15,7 +15,7 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('verifyCategoryCount')->only(['create', 'store']);
+        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
     }
 
     /**
