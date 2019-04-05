@@ -8,6 +8,7 @@ use App\Http\Requests\Posts\CreatePostsRequest;
 use App\Http\Requests\Posts\UpdatePostsRequest;
 use App\Post;
 use App\Category;
+use App\Tag;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index')->with('posts', Post::all());
+        return view('posts.index')
+            ->with('posts', Post::all())
+            ->with('tags', Tag::all());
     }
 
     /**
@@ -35,7 +38,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories', Category::all());
+        return view('posts.create')
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all());
     }
 
     /**
@@ -50,7 +55,7 @@ class PostsController extends Controller
         $image = $request->image->store('posts');
 
         // Create the post
-        Post::create([
+        $newPost = Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
@@ -58,6 +63,11 @@ class PostsController extends Controller
             'published_at' => $request->published_at,
             'category_id' => $request->category
         ]);
+
+        if ($request->tags) {
+            // Does the job automatically because of the belongs-to-many relationship
+            $newPost->tags()->attach($request->tags);
+        }
 
         // Flash a message and redirect
         session()->flash('success', 'Post created successfully');
@@ -83,7 +93,10 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post)->with('categories', Category::all());
+        return view('posts.create')
+            ->with('post', $post)
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all());
     }
 
     /**
@@ -104,6 +117,12 @@ class PostsController extends Controller
             $post->deleteImage();
 
             $data['image'] = $image;
+        }
+
+        // Update tags
+        if ($request->tags) {
+            // Does the job automatically because of the many-to-many relationship
+            $post->tags()->sync($request->tags);
         }
 
         // Update attributes
