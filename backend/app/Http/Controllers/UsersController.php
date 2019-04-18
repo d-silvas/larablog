@@ -11,4 +11,14 @@ class UsersController extends Controller
     {
         return view('users.index')->with('users', User::all());
     }
+
+    public function makeAdmin(User $user)
+    {
+        $user->role = 'admin';
+        $user->save();
+
+        session()->flash('success', 'User promoted to admin role successfully');
+
+        return redirect(route('users.index'));
+    }
 }
