@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('posts', 'PostsController');    
     Route::get('trashed-posts', 'PostsController@trashed')->name('trahsed-posts.index');
     Route::put('restore-post/{post}', 'PostsController@restore')->name('restore-post');
+
+    Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
+    Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
 });
 
 Route::middleware(['auth', 'admin'])->group(function() {
