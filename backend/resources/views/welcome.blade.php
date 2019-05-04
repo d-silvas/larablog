@@ -8,19 +8,43 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <h6>Search</h6>
+            <form action="{{ route('welcome') }}" method="GET" class="input-group">
+                <input
+                    type="text"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search"
+                    value="{{ request()->query('search') }}"
+                    >
+                <button class="btn btn-primary btn-sm" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
             <h1>Posts</h1>
             <hr>
         </div>
-        @foreach($posts as $post)
+        @forelse($posts as $post)
         <div class="col-12">
             <a href="{{ route('blog.show', $post->id) }}">
                 {{ $post->title }}
             </a>
             [{{ $post->category->name }}]
         </div>
-        @endforeach
+        @empty
         <div class="col-12">
-            {{ $posts->links() }}
+            <p class="text-center">
+                No results found for query <b>{{ request()->query('search') }}</b>
+            </p>
+        </div>
+        @endforelse
+        <div class="col-12">
+            {{ $posts->appends(['search' => request()->query('search')])->links() }}
         </div>
     </div>
 </div>
