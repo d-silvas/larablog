@@ -15,6 +15,14 @@ class Post extends Model
 {
     use softDeletes;
 
+    /**
+     * The attributes that should be mutated to dates.
+     * Note that created_at, updated_at are automatically mutated.
+     * 
+     * @var array
+     */
+    protected $dates = ['published_at', 'deleted_at'];
+
     protected $fillable = [
         'title',
         'description',
@@ -68,9 +76,14 @@ class Post extends Model
         $search = request()->query('search');
 
         if (empty($search)) {
-            return $query;
+            return $query->published();
         }
 
-        return $query->where('title', 'LIKE', "%{$search}%");
+        return $query->published()->where('title', 'LIKE', "%{$search}%");
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<=', now());
     }
 }

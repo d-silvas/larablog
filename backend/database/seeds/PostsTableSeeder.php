@@ -31,7 +31,8 @@ class PostsTableSeeder extends Seeder
                     $faker->realText(400, 2) . "\n" . $faker->realText(400, 2) . "\n" . $faker->realText(400, 2),
                 'image' => 'posts/default.png',
                 'user_id' => $faker->randomElement($userIds),
-                'category_id' => $faker->randomElement($categoriesIds)
+                'category_id' => $faker->randomElement($categoriesIds),
+                'published_at' => $faker->dateTimeBetween('-10 years', '+10 years', null) 
             ]);
             for ($j = 0; $j < random_int(1, 15); $j++) {
                 $post->tags()->attach($faker->randomElement($tagsIds));
