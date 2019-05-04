@@ -19,6 +19,9 @@
             [{{ $post->category->name }}]
         </div>
         @endforeach
+        <div class="col-12">
+            {{ $posts->links() }}
+        </div>
     </div>
 </div>
 
