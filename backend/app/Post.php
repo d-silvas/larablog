@@ -20,6 +20,7 @@ class Post extends Model
         'description',
         'content',
         'image',
+        'user_id',
         'created_at',
         'published_at',
         'category_id'

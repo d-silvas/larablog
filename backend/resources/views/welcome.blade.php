@@ -1,4 +1,8 @@
-@extends('layouts.public')
+@extends('layouts.blog')
+
+@section('title')
+{{ config('app.name') }}
+@endsection
 
 @section('content')
 <div class="container">
@@ -9,7 +13,9 @@
         </div>
         @foreach($posts as $post)
         <div class="col-12">
-            {{ $post->title }}
+            <a href="{{ route('blog.show', $post->id) }}">
+                {{ $post->title }}
+            </a>
             [{{ $post->category->name }}]
         </div>
         @endforeach
