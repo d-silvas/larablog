@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 use App\Category;
+use App\User;
 use App\Tag;
 
 class Post extends Model
@@ -42,6 +43,11 @@ class Post extends Model
     {
         // https://stackoverflow.com/questions/25726602/timestamps-are-not-updating-while-attaching-data-in-pivot-table/
         return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**

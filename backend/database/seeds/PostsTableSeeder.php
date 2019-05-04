@@ -6,6 +6,7 @@ use App\Tag;
 use App\Post;
 use App\Category;
 use Faker\Factory as Faker;
+use App\User;
 
 class PostsTableSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class PostsTableSeeder extends Seeder
     {
         $categoriesIds = Category::all()->pluck('id')->toArray();
         $tagsIds = Tag::all()->pluck('id')->toArray();
+        $userIds = User::all()->pluck('id')->toArray();
 
         $faker = Faker::create();
         $faker->addProvider(new \Faker\Provider\en_US\Text($faker));
@@ -27,8 +29,9 @@ class PostsTableSeeder extends Seeder
                 'description' => $faker->realText(300, 2),
                 'content' => 
                     $faker->realText(400, 2) . "\n" . $faker->realText(400, 2) . "\n" . $faker->realText(400, 2),
-                'category_id' => $faker->randomElement($categoriesIds),
-                'image' => 'posts/default.png'
+                'image' => 'posts/default.png',
+                'user_id' => $faker->randomElement($userIds),
+                'category_id' => $faker->randomElement($categoriesIds)
             ]);
             for ($j = 0; $j < random_int(1, 15); $j++) {
                 $post->tags()->attach($faker->randomElement($tagsIds));
