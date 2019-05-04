@@ -15,7 +15,9 @@
 <img src="{{ Gravatar::src($post->user->email) }}" alt="" class="avatar avatar-sm">
 <br>
 @foreach ($post->tags as $tag)
-    {{ $tag->name }} | 
+    <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-dark">
+        {{ $tag->name }}
+    </a>
 @endforeach
 <div class="py-2"></div>
 <h4> {{ $post->description }}</h4>

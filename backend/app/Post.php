@@ -62,4 +62,15 @@ class Post extends Model
         // as with route model binding
         return in_array($tagId, $this->tags->pluck('id')->toArray());
     }
+
+    public function scopeSearched($query)
+    {
+        $search = request()->query('search');
+
+        if (empty($search)) {
+            return $query;
+        }
+
+        return $query->where('title', 'LIKE', "%{$search}%");
+    }
 }
