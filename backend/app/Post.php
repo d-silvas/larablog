@@ -40,7 +40,8 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        // https://stackoverflow.com/questions/25726602/timestamps-are-not-updating-while-attaching-data-in-pivot-table/
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     /**
