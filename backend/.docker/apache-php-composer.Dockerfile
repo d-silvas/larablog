@@ -16,11 +16,15 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 WORKDIR /backend
 
+# Apache configuration, php.ini
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
-
 RUN chown -R www-data:www-data /backend \
   && a2enmod rewrite \
   && mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 # PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql
+
+# Install Node.js and npm
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install nodejs npm -y

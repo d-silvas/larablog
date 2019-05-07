@@ -29,6 +29,7 @@ SESSION_LIFETIME=120
     - `php artisan key:generate`
     - `php artisan storage:link`
     - `php artisan migrate:fresh --seed`
+    - `npm install`
 - `code . --user-data-dir ./.vscode`. Related to the first point :(
 
 -----
