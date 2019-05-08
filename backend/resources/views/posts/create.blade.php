@@ -10,12 +10,15 @@
     <div class="card-body">
         @include('partials.errors')
 
-        <form action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
+        <form
+            id="update-post-form"action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            >
             @csrf
             @if (isset($post))
             @method('PUT')
             @endif
-
 
             <div class="form-group">
                 <label for="title">Title</label>
@@ -40,13 +43,14 @@
 
             <div class="form-group">
                 <label for="content">Content</label>
-                <input
+                {{-- <input
                     id="content"
                     type="hidden"
                     name="content"
                     value="{{ $post->content ?? '' }}"
                     >
-                <trix-editor input="content"></trix-editor>
+                <trix-editor input="content"></trix-editor> --}}
+                <textarea id="mytextarea" name="content">Hello, World!</textarea>
             </div>
 
             <div class="form-group">
@@ -126,8 +130,18 @@
 @endsection
 
 @section('scripts')
+<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=t81izt960o5ylhfmtpsr9bx8a2j74dn9oyrm9u1jpfv3orly"></script>
+<script>
+    tinymce.init({
+        selector: '#mytextarea',
+        plugins: "codesample",
+        // toolbar: "code",
+        // menubar: "tools"
+    });
+    </script>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
 flatpickr('#published_at', {
@@ -139,4 +153,5 @@ $(document).ready(function() {
     $('#tags').select2();
 });
 </script>
+
 @endsection
