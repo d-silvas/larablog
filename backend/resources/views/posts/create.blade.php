@@ -43,14 +43,12 @@
 
             <div class="form-group">
                 <label for="content">Content</label>
-                {{-- <input
+                <textarea
                     id="content"
-                    type="hidden"
                     name="content"
-                    value="{{ $post->content ?? '' }}"
                     >
-                <trix-editor input="content"></trix-editor> --}}
-                <textarea id="mytextarea" name="content">Hello, World!</textarea>
+                    {{ $post->content ?? '' }}
+                </textarea>
             </div>
 
             <div class="form-group">
@@ -130,18 +128,16 @@
 @endsection
 
 @section('scripts')
-<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=t81izt960o5ylhfmtpsr9bx8a2j74dn9oyrm9u1jpfv3orly"></script>
+<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey={{ config('services.tinymce.key') }}"></script>
 <script>
-    tinymce.init({
-        selector: '#mytextarea',
-        plugins: "codesample",
-        // toolbar: "code",
-        // menubar: "tools"
-    });
-    </script>
-
+tinymce.init({
+    selector: '#content',
+    plugins: 'codesample,mediaembed,code',
+    extended_valid_elements: 'script[language|type|src]',
+    branding: false
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
 flatpickr('#published_at', {
