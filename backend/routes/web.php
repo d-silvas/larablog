@@ -18,7 +18,7 @@ Route::get('categories/{category}', [PostsController::class, 'category'])->name(
 Route::get('tag/{tag}', [PostsController::class, 'tag'])->name('blog.tag');
 
 Route::prefix('admin')->group(function() {
-    Auth::routes();
+    Auth::routes(['register' => false, 'reset' => false]);
     
     Route::middleware(['auth'])->group(function() {
         Route::get('/home', 'HomeController@index')->name('home');
