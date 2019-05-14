@@ -74,7 +74,7 @@
 
 function handleDelete(id) {
     var form = $('#deleteCategoryForm');
-    form.attr('action', `/categories/${id}`);
+    form.attr('action', `/admin/categories/${id}`);
     $('#deleteModal').modal('show');
 }
 

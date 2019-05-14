@@ -74,7 +74,7 @@
 
 function handleDelete(id) {
     var form = $('#deleteTagForm');
-    form.attr('action', `/tags/${id}`);
+    form.attr('action', `/admin/tags/${id}`);
     $('#deleteModal').modal('show');
 }
 
