@@ -13,9 +13,9 @@ use \App\Http\Controllers\Blog\PostsController;
 */
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('blog/posts/{post}', [PostsController::class, 'show'])->name('blog.show');
-Route::get('blog/categories/{category}', [PostsController::class, 'category'])->name('blog.category');
-Route::get('blog/tag/{tag}', [PostsController::class, 'tag'])->name('blog.tag');
+Route::get('posts/{post}', [PostsController::class, 'show'])->name('blog.show');
+Route::get('categories/{category}', [PostsController::class, 'category'])->name('blog.category');
+Route::get('tag/{tag}', [PostsController::class, 'tag'])->name('blog.tag');
 
 Route::prefix('admin')->group(function() {
     Auth::routes();

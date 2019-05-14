@@ -1,6 +1,6 @@
-#CMS in Laravel
+# CMS in Laravel
 
-##Installation
+## Installation
 - Run `build.sh`
 - Create `backend/.env` file. Example:
 ```
