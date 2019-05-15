@@ -11,15 +11,12 @@
         <div class="col-9">
             <div class="row">
                 <div class="col-12">
-                    <h1>Posts</h1>
+                    {{-- <h1>Posts</h1> --}}
                     <hr>
                 </div>
                 @forelse($posts as $post)
                 <div class="col-12">
-                    <a href="{{ route('blog.show', $post->id) }}">
-                        {{ $post->title }}
-                    </a>
-                    [{{ $post->category->name }}]
+                    @include('partials.post-card', ['post' => $post])
                 </div>
                 @empty
                 <div class="col-12">
