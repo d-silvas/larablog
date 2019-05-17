@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer px-3 py-1">
         <div class="row">
             <div class="col-12">
                 <a href="{{ route('blog.tag', $post->category->id) }}" class="badge badge-primary">

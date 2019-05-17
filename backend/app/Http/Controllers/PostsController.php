@@ -149,10 +149,12 @@ class PostsController extends Controller
         if ($post->trashed()) {
             $post->deleteImage();
             $post->forceDelete();
+            $successMsg = 'Post deleted successfully';
         } else {
             $post->delete();
+            $successMsg = 'Post trashed successfully';
         }
-        session()->flash('success', 'Post trashed successfully');
+        session()->flash('success', $successMsg);
         return redirect(route('posts.index'));
     }
 
@@ -163,7 +165,6 @@ class PostsController extends Controller
      */
     public function trashed()
     {
-        // TODO: don't show the non-trashed
         $trashed = Post::onlyTrashed()->get();
         // dynamic method, same as ->with('posts', $trashed)
         return view('posts.index')->withPosts($trashed);
