@@ -25,7 +25,7 @@
                     {{ $post->category->name }}
                 </a>
                 <span class="middot-divider"></span>
-                {{ $post->created_at->format('d/m/Y') }}
+                {{ $post->published_at->format('d/m/Y') }}
                 <span class="middot-divider"></span>
                 4 min
             </div>

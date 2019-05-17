@@ -25,6 +25,8 @@ QUEUE_CONNECTION=sync
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
 
+FILESYSTEM_DRIVER=public
+
 TINYMCE_API_KEY=xyz
 ```
 - Run `start.sh`, and, inside the container:
