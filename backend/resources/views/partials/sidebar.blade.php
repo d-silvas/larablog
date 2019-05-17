@@ -1,6 +1,5 @@
-<div class="row">
+<div class="row py-2">
     <div class="col-12">
-        <h6>Search</h6>
         <form action="" method="GET" class="input-group">
             <input
                 type="text"
@@ -14,38 +13,30 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row py-2">
     <div class="col-12">
-        <h1>Categories</h1>
+        <h4>Categories</h4>
         <hr>
     </div>
     <div class="col-12">
-        <ul>
-            @foreach($categories as $category)
-            <li>
-                <a href="{{ route('blog.category', $category->id) }}">
-                    {{ $category->name }}
-                </a>
-            </li>    
-            @endforeach
-        </ul>
+    @foreach($categories as $category)
+        <a href="{{ route('blog.category', $category->id) }}" class="badge badge-primary">
+            {{ $category->name }}
+        </a>
+    @endforeach
     </div>
 </div>
 
-<div class="row">
+<div class="row py-2">
     <div class="col-12">
-        <h1>Tags</h1>
+        <h4>Tags</h4>
         <hr>
     </div>
     <div class="col-12">
-        <ul>
-            @foreach($tags as $tag)
-            <li>
-                <a href="{{ route('blog.tag', $tag->id) }}">
-                    {{ $tag->name }}
-                </a>
-            </li>    
-            @endforeach
-        </ul>
+    @foreach($tags as $tag)
+        <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-secondary">
+            {{ $tag->name }}
+        </a>
+    @endforeach
     </div>
 </div>

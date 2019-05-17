@@ -1,37 +1,34 @@
-<div class="card border-dark mb-3">
-    <div class="card-header">
+<div class="card mb-3">
+    <div class="card-body">
         <div class="row">
-            <div class="col-3">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="{{ Gravatar::src($post->user->email) }}" alt="" class="avatar avatar-sm" style="width:100%">
+            <div class="col-9">
+                <div class="row title-row">
+                    <div class="col-12">
+                        <h5><a href="{{ route('blog.show', $post->id) }}">{{ $post->title }}</a></h5>
                     </div>
-                    <div class="col-9">
-                        {{ $post->user->name }}
+                </div>
+                <div class="row description-row">
+                    <div class="col-12">
+                        <p class="card-text"> {{ $post->description }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-9">
-                <h5><a href="{{ route('blog.show', $post->id) }}">{{ $post->title }}</a></h5>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="row">
             <div class="col-3">
                 <img src="{{ asset('storage/' . $post->image) }}" style="width:100%;">
-            </div>
-            <div class="col-9">
-                <p class="card-text"> {{ $post->description }}</p>
             </div>
         </div>
     </div>
     <div class="card-footer">
-        [{{ $post->category->name }}]
-        @foreach ($post->tags as $tag)
-        <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-dark">
-            {{ $tag->name }}
-        </a>
-        @endforeach
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ route('blog.tag', $post->category->id) }}" class="badge badge-primary">
+                    {{ $post->category->name }}
+                </a>
+                <span class="middot-divider"></span>
+                {{ $post->created_at->format('d/m/Y') }}
+                <span class="middot-divider"></span>
+                4 min
+            </div>
+        </div>
     </div>
 </div>
