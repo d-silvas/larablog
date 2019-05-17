@@ -80,7 +80,7 @@
 
         <main class="py-4">
             @auth
-            <div class="container">
+            <div class="main-content px-4 w-100 mx-auto">
                 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{ session()->get('success') }}
@@ -98,7 +98,9 @@
                 </div>
             </div>
             @else
+            <div class="main-content px-4 w-100 mx-auto">
                 @yield('content')
+            </div>
             @endauth
         </main>
     </div>

@@ -21,7 +21,7 @@
     <div class="col-12">
     @foreach($categories as $category)
         <a href="{{ route('blog.category', $category->id) }}" class="badge badge-primary">
-            {{ $category->name }}
+            {{ $category->name }} ({{ $category->posts->count() }})
         </a>
     @endforeach
     </div>
@@ -35,7 +35,7 @@
     <div class="col-12">
     @foreach($tags as $tag)
         <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-secondary">
-            {{ $tag->name }}
+            {{ $tag->name }} ({{ $tag->posts->count() }})
         </a>
     @endforeach
     </div>

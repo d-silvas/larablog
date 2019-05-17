@@ -4,27 +4,97 @@
 {{ $post->title . ' - ' . config('app.name') }}
 @endsection
 
+@section('css')
+<style>
+.all-post-content {
+    max-width: 740px;
+}
+.author-row img {
+    width: 50px;
+    border-radius: 50%;
+
+}
+.middot-divider {
+    padding-right: .3em;
+    padding-left: .3em;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.middot-divider::after {
+    content: '\00B7';
+}
+.content-row {
+    font-size: 18px;
+    line-height: 1.58;
+}
+.post-img-row img {
+    width: 100%;
+}
+</style>
+@endsection
+
 @section('content')
+<div class="all-post-content mx-auto">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{ $post->title }}</h2>
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col-12">
+            <h3 class="text-secondary">{{ $post->title }}</h3>
+        </div>
+    </div>
+    <div class="row author-row">
+        <div class="col-12 d-flex flex-row">
+            <div>
+                <img src="{{ Gravatar::src($post->user->email) }}" alt="" class="avatar avatar-sm">
+            </div>
+            <div>
+                <div class="row pl-2">
+                    <div class="col-12">
+                        {{ $post->user->name }}
+                    </div>
+                    <div class="col-12 text-secondary">
+                        <a href="{{ route('blog.category', $post->category->id) }}" class="badge badge-primary">
+                            {{ $post->category->name }}
+                        </a>
+                        <span class="middot-divider"></span>
+                        {{ $post->created_at->format('d/m/Y') }}
+                        <span class="middot-divider"></span>
+                        4 min
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row post-img-row py-4">
+        <div class="col-12">
+            <img src="{{ asset('storage/' . $post->image) }}">
+        </div>
+    </div>
+    
+    <div class="row content-row pb-2">
+        <div class="col-12">
+            {!! $post->content !!}
+        </div>
+    </div>
+    
+    <div class="row pb-4">
+        <div class="col-12">
+        @foreach ($post->tags as $tag)
+            <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-dark">
+                {{ $tag->name }}
+            </a>
+        @endforeach
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div id="disqus_thread"></div>
+</div>
 
-<img src="{{ asset('storage/' . $post->image) }}">
-
-<h3>{{ $post->title }}</h3>
-<hr>
-<span>{{ $post->category->name }}</span> | 
-<span>{{ $post->user->name }}</span>
-<img src="{{ Gravatar::src($post->user->email) }}" alt="" class="avatar avatar-sm">
-<br>
-@foreach ($post->tags as $tag)
-    <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-dark">
-        {{ $tag->name }}
-    </a>
-@endforeach
-<div class="py-2"></div>
-<h4> {{ $post->description }}</h4>
-<div class="py-2"></div>
-{!! $post->content !!}
-
-<div id="disqus_thread"></div>
 <script>
 
     /**
