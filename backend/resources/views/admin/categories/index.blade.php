@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-    <a href="{{ route('categories.create') }}" class="btn btn-success">
+    <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
         Add category
     </a>
 </div>
@@ -26,7 +26,7 @@
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->posts->count() }}</td>
                     <td>
-                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
+                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info btn-sm">
                             Edit
                         </a>
                         <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $category->id }})">Delete</button>

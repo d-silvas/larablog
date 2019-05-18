@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-    <a href="{{ route('posts.create') }}" class="btn btn-success">
+    <a href="{{ route('admin.posts.create') }}" class="btn btn-success">
         Add Post
     </a>
 </div>
@@ -33,18 +33,18 @@
                         {{ $post->title }}
                     </td>
                     <td>
-                        <a href="{{ route('categories.edit', $post->category->id) }}">
+                        <a href="{{ route('admin.categories.edit', $post->category->id) }}">
                             {{ $post->category->name }}
                         </a>
                     </td>
                     @if ($post->trashed())
                     <td>
-                        <form action="{{ route('restore-post', $post->id) }}" method="POST">
+                        <form action="{{ route('admin.restore-post', $post->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <button
                                 type="submit"
-                                href="{{ route('posts.edit', $post->id) }}"
+                                href="{{ route('admin.posts.edit', $post->id) }}"
                                 class="btn btn-info btn-sm"
                                 >
                                 Restore
@@ -53,11 +53,11 @@
                     </td>
                     @else
                     <td>
-                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm">Edit</a>
+                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-info btn-sm">Edit</a>
                     </td>
                     @endif
                     <td>
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">

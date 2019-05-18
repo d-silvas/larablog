@@ -43,7 +43,7 @@ class TagsController extends Controller
 
         session()->flash('success', 'Tag created successfully');
 
-        return redirect(route('tags.index'));
+        return redirect(route('admin.tags.index'));
     }
 
     /**
@@ -83,7 +83,7 @@ class TagsController extends Controller
 
         session()->flash('success', 'Tag updated successfully');
 
-        return redirect(route('tags.index'));
+        return redirect(route('admin.tags.index'));
     }
 
     /**
@@ -105,6 +105,6 @@ class TagsController extends Controller
 
         session()->flash('success', 'Tag deleted successfully');
 
-        return redirect(route('tags.index'));
+        return redirect(route('admin.tags.index'));
     }
 }

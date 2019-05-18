@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-    <a href="{{ route('tags.create') }}" class="btn btn-success">
+    <a href="{{ route('admin.tags.create') }}" class="btn btn-success">
         Add tag
     </a>
 </div>
@@ -26,7 +26,7 @@
                     <td>{{ $tag->name }}</td>
                     <td>{{ $tag->posts->count() }}</td>
                     <td>
-                        <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-info btn-sm">
+                        <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-info btn-sm">
                             Edit
                         </a>
                         <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $tag->id }})">Delete</button>

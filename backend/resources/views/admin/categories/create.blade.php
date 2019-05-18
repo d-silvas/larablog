@@ -9,7 +9,7 @@
     <div class="card-body">
        @include('admin.partials.errors')
         <form
-            action="{{ isset($category) ? route('categories.update', $category->id) : route('categories.store') }}"
+            action="{{ isset($category) ? route('admin.categories.update', $category->id) : route('admin.categories.store') }}"
             method="POST"
             >
             @csrf

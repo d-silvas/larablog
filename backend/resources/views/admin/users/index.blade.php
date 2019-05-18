@@ -32,7 +32,7 @@
                     </td>
                     <td>
                         @if(auth()->user()->isAdmin() && !$user->isAdmin())
-                        <form action="{{ route('users.make-admin', $user->id) }}" method="POST">
+                        <form action="{{ route('admin.users.make-admin', $user->id) }}" method="POST">
                             @csrf
                             <button
                                 type="submit"

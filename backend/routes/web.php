@@ -12,31 +12,33 @@ use \App\Http\Controllers\Blog\PostsController;
 |
 */
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/', 'WelcomeController@index')->name('public.welcome');
 Route::get('posts/{post}', [PostsController::class, 'show'])->name('public.show');
 Route::get('categories/{category}', [PostsController::class, 'category'])->name('public.category');
 Route::get('tag/{tag}', [PostsController::class, 'tag'])->name('public.tag');
 
 Route::prefix('admin')->group(function() {
-    Auth::routes(['register' => false, 'reset' => false]);
-    
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
+
     Route::middleware(['auth'])->group(function() {
-        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/home', 'HomeController@index')->name('admin.home');
+
+        Route::resource('categories', 'CategoriesController', ['as' => 'admin']);
     
-        Route::resource('categories', 'CategoriesController');
+        Route::resource('tags', 'TagsController', ['as' => 'admin']);
     
-        Route::resource('tags', 'TagsController');
+        Route::resource('posts', 'PostsController', ['as' => 'admin']);    
+        Route::get('trashed-posts', 'PostsController@trashed')->name('admin.trashed-posts.index');
+        Route::put('restore-post/{post}', 'PostsController@restore')->name('admin.restore-post');
     
-        Route::resource('posts', 'PostsController');    
-        Route::get('trashed-posts', 'PostsController@trashed')->name('trahsed-posts.index');
-        Route::put('restore-post/{post}', 'PostsController@restore')->name('restore-post');
-    
-        Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
-        Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
+        Route::get('users/profile', 'UsersController@edit')->name('admin.users.edit-profile');
+        Route::put('users/profile', 'UsersController@update')->name('admin.users.update-profile');
     });
     
     Route::middleware(['auth', 'admin'])->group(function() {
-        Route::get('users', 'UsersController@index')->name('users.index');
-        Route::post('users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
+        Route::get('users', 'UsersController@index')->name('admin.users.index');
+        Route::post('users/{user}/make-admin', 'UsersController@makeAdmin')->name('admin.users.make-admin');
     });
 });

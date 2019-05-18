@@ -11,7 +11,7 @@
         @include('admin.partials.errors')
 
         <form
-            id="update-post-form"action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}"
+            id="update-post-form"action="{{ isset($post) ? route('admin.posts.update', $post->id) : route('admin.posts.store') }}"
             method="POST"
             enctype="multipart/form-data"
             >

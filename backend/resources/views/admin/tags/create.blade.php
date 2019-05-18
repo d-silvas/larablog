@@ -9,7 +9,7 @@
     <div class="card-body">
         @include('admin.partials.errors')
         <form
-            action="{{ isset($tag) ? route('tags.update', $tag->id) : route('tags.store') }}"
+            action="{{ isset($tag) ? route('admin.tags.update', $tag->id) : route('admin.tags.store') }}"
             method="POST"
             >
             @csrf

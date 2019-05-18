@@ -20,7 +20,7 @@ class UsersController extends Controller
 
         session()->flash('success', 'User promoted to admin role successfully');
 
-        return redirect(route('users.index'));
+        return redirect(route('admin.users.index'));
     }
 
     public function edit()

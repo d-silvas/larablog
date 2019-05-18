@@ -7,7 +7,7 @@
 
     <div class="card-body">
         @include('admin.partials.errors')
-        <form action="{{ route('users.update-profile') }}" method="POST">
+        <form action="{{ route('admin.users.update-profile') }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">

@@ -72,7 +72,7 @@ class PostsController extends Controller
 
         // Flash a message and redirect
         session()->flash('success', 'Post created successfully');
-        return redirect(route('posts.index'));
+        return redirect(route('admin.posts.index'));
     }
 
     /**
@@ -131,7 +131,7 @@ class PostsController extends Controller
 
         // Flash message and redirect
         session()->flash('success', 'Post updated successfully');
-        return redirect(route('posts.index'));
+        return redirect(route('admin.posts.index'));
     }
 
     /**
@@ -155,7 +155,7 @@ class PostsController extends Controller
             $successMsg = 'Post trashed successfully';
         }
         session()->flash('success', $successMsg);
-        return redirect(route('posts.index'));
+        return redirect(route('admin.posts.index'));
     }
 
     /**
