@@ -24,8 +24,10 @@ class PostsTableSeeder extends Seeder
         $faker = Faker::create();
         $faker->addProvider(new \Faker\Provider\en_US\Text($faker));
         for ($i = 0; $i < 100; $i++) {
+            $title = $faker->realText(70, 2);
             $post = Post::create([
-                'title' => $faker->realText(140, 2),
+                'title' => $title,
+                'slug' => str_slug($title, '-'),
                 'description' => $faker->realText(300, 2),
                 'content' => 
                     $faker->realText(400, 2) . "\n" . $faker->realText(400, 2) . "\n" . $faker->realText(400, 2),

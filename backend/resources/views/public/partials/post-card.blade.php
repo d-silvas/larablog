@@ -4,7 +4,11 @@
             <div class="col-9">
                 <div class="row title-row">
                     <div class="col-12">
-                        <h5><a href="{{ route('public.show', $post->id) }}">{{ $post->title }}</a></h5>
+                        <h5>
+                            <a href="{{ route('public.show', ['post' => $post->id, 'slug' => $post->slug]) }}">
+                                {{ $post->title }}
+                            </a>
+                        </h5>
                     </div>
                 </div>
                 <div class="row description-row">

@@ -54,9 +54,13 @@ class PostsController extends Controller
         // Upload the image
         $image = $request->image->store('posts');
 
+        // Create new slug
+        $slug = str_slug($request->title, '-');
+
         // Create the post
         $newPost = Post::create([
             'title' => $request->title,
+            'slug' => $slug,
             'description' => $request->description,
             'content' => $request->content,
             'image' => $image,
@@ -110,6 +114,10 @@ class PostsController extends Controller
     public function update(UpdatePostsRequest $request, Post $post)
     {
         $data = $request->only(['title', 'description', 'published_at', 'content']);
+
+        // Recalculate slug
+        $data['slug'] = str_slug($data['title'], '-');
+
         // Check if new image
         if ($request->hasFile('image')) {
             // Upload it

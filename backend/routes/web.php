@@ -13,7 +13,7 @@ use \App\Http\Controllers\Blog\PostsController;
 */
 
 Route::get('/', 'WelcomeController@index')->name('public.welcome');
-Route::get('posts/{post}', [PostsController::class, 'show'])->name('public.show');
+Route::get('posts/{post}/{slug?}', [PostsController::class, 'show'])->name('public.show');
 Route::get('categories/{category}', [PostsController::class, 'category'])->name('public.category');
 Route::get('tag/{tag}', [PostsController::class, 'tag'])->name('public.tag');
 

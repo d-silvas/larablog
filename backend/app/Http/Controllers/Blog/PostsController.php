@@ -11,8 +11,16 @@ use App\Tag;
 
 class PostsController extends Controller
 {
-    public function show(Post $post)
+    public function show(Post $post, string $slug = '')
     {
+        if ($post->slug !== $slug) {
+            $newRoute = route('public.show', [
+                'post' => $post->id,
+                'slug' => $post->slug
+            ]);
+            return redirect($newRoute);
+        }
+
         return view('public.show')->with('post', $post);
     }
 
