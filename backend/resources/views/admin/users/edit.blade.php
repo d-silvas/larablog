@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <div class="card-header">My profile</div>
 
     <div class="card-body">
-        @include('partials.errors')
+        @include('admin.partials.errors')
         <form action="{{ route('users.update-profile') }}" method="POST">
             @csrf
             @method('PUT')

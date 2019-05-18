@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     </div>
 
     <div class="card-body">
-        @include('partials.errors')
+        @include('admin.partials.errors')
 
         <form
             id="update-post-form"action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}"

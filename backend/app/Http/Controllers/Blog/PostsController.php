@@ -13,12 +13,12 @@ class PostsController extends Controller
 {
     public function show(Post $post)
     {
-        return view('blog.show')->with('post', $post);
+        return view('public.show')->with('post', $post);
     }
 
     public function category(Category $category)
     {
-        return view('blog.category')
+        return view('public.category')
             ->with('category', $category)
             ->with('posts', $category->posts()->searched()->paginate(10))
             ->with('categories', Category::all())
@@ -27,7 +27,7 @@ class PostsController extends Controller
 
     public function tag(Tag $tag)
     {
-        return view('blog.tag')
+        return view('public.tag')
             ->with('tag', $tag)
             ->with('posts', $tag->posts()->searched()->paginate(10))
             ->with('categories', Category::all())

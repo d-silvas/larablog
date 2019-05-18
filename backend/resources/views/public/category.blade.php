@@ -1,7 +1,7 @@
-@extends('layouts.blog')
+@extends('layouts.public')
 
 @section('title')
-Tag: {{ $tag->name }}
+Category: {{ $category->name }}
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Tag: {{ $tag->name }}
         <div class="col-9">
             <div class="row">
                 <div class="col-12">
-                    <h1>{{ $tag->name }}</h1>
+                    <h1>{{ $category->name }}</h1>
                     <hr>
                 </div>
                 @forelse($posts as $post)
@@ -35,7 +35,7 @@ Tag: {{ $tag->name }}
         </div>
     
         <div class="col-3">
-            @include('partials.sidebar')
+            @include('public.partials.sidebar')
         </div>
     </div>
 </div>

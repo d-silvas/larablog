@@ -1,4 +1,4 @@
-@extends('layouts.blog')
+@extends('layouts.public')
 
 @section('title')
 {{ $post->title . ' - ' . config('app.name') }}
@@ -42,7 +42,7 @@
     </div>
     <div class="row pb-2">
         <div class="col-12">
-            <h3 class="text-secondary">{{ $post->title }}</h3>
+            <h3 class="text-secondary">{{ $post->description }}</h3>
         </div>
     </div>
     <div class="row author-row">

@@ -11,7 +11,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('welcome')
+        return view('public.welcome')
             ->with('categories', Category::all())
             ->with('tags', Tag::all())
             ->with('posts', Post::searched()->orderBy('published_at', 'desc')->paginate(10));

@@ -1,4 +1,4 @@
-@extends('layouts.blog')
+@extends('layouts.public')
 
 @section('title')
 {{ config('app.name') }}
@@ -42,7 +42,7 @@
         <div class="row">
             @forelse($posts as $post)
             <div class="col-12">
-                @include('partials.post-card', ['post' => $post])
+                @include('public.partials.post-card', ['post' => $post])
             </div>
             @empty
             <div class="col-12">
@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-12 col-md-3">
-        @include('partials.sidebar')
+        @include('public.partials.sidebar')
     </div>
 </div>
 @endsection
