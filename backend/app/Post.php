@@ -41,7 +41,10 @@ class Post extends Model
      */
     public function deleteImage()
     {
-        Storage::delete($this->image);
+        // Don't delete default image
+        if ($this->image !== 'posts/default.png') {
+            Storage::delete($this->image);
+        }
     }
 
     public function category()
