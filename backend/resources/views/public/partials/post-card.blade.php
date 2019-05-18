@@ -4,7 +4,7 @@
             <div class="col-9">
                 <div class="row title-row">
                     <div class="col-12">
-                        <h5><a href="{{ route('blog.show', $post->id) }}">{{ $post->title }}</a></h5>
+                        <h5><a href="{{ route('public.show', $post->id) }}">{{ $post->title }}</a></h5>
                     </div>
                 </div>
                 <div class="row description-row">
@@ -21,7 +21,7 @@
     <div class="card-footer px-3 py-1">
         <div class="row">
             <div class="col-12">
-                <a href="{{ route('blog.tag', $post->category->id) }}" class="badge badge-primary">
+                <a href="{{ route('public.category', $post->category->id) }}" class="badge badge-primary">
                     {{ $post->category->name }}
                 </a>
                 <span class="middot-divider"></span>

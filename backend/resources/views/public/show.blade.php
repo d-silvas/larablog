@@ -47,7 +47,7 @@
                         {{ $post->user->name }}
                     </div>
                     <div class="col-12 text-secondary">
-                        <a href="{{ route('blog.category', $post->category->id) }}" class="badge badge-primary">
+                        <a href="{{ route('public.category', $post->category->id) }}" class="badge badge-primary">
                             {{ $post->category->name }}
                         </a>
                         <span class="middot-divider"></span>
@@ -74,7 +74,7 @@
     <div class="row pb-4">
         <div class="col-12">
         @foreach ($post->tags as $tag)
-            <a href="{{ route('blog.tag', $tag->id) }}" class="badge badge-dark">
+            <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-dark">
                 {{ $tag->name }}
             </a>
         @endforeach
