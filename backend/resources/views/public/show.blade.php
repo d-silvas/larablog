@@ -14,15 +14,6 @@
     border-radius: 50%;
 
 }
-.middot-divider {
-    padding-right: .3em;
-    padding-left: .3em;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.54);
-}
-.middot-divider::after {
-    content: '\00B7';
-}
 .content-row {
     font-size: 18px;
     line-height: 1.58;
