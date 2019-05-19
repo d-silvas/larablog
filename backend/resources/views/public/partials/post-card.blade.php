@@ -1,7 +1,10 @@
 <div class="card mb-3">
     <div class="card-body">
         <div class="row">
-            <div class="col-9">
+            <div class="col-12 col-sm-3">
+                <img src="{{ asset('storage/' . $post->image) }}" style="width:100%;">
+            </div>
+            <div class="col-12 col-sm-9">
                 <div class="row title-row">
                     <div class="col-12">
                         <h5>
@@ -16,9 +19,6 @@
                         <p class="card-text"> {{ $post->description }}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
-                <img src="{{ asset('storage/' . $post->image) }}" style="width:100%;">
             </div>
         </div>
     </div>

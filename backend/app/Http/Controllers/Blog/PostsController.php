@@ -13,6 +13,10 @@ class PostsController extends Controller
 {
     public function show(Post $post, string $slug = '')
     {
+        if (!$post->isPublished()) {
+            abort(404);
+        }
+
         if ($post->slug !== $slug) {
             $newRoute = route('public.show', [
                 'post' => $post->id,
@@ -28,7 +32,7 @@ class PostsController extends Controller
     {
         return view('public.category')
             ->with('category', $category)
-            ->with('posts', $category->posts()->searched()->paginate(10))
+            ->with('posts', $category->posts()->published()->searched()->paginate(10))
             ->with('categories', Category::all())
             ->with('tags', Tag::all());
     }
@@ -37,7 +41,7 @@ class PostsController extends Controller
     {
         return view('public.tag')
             ->with('tag', $tag)
-            ->with('posts', $tag->posts()->searched()->paginate(10))
+            ->with('posts', $tag->posts()->published()->searched()->paginate(10))
             ->with('categories', Category::all())
             ->with('tags', Tag::all());
     }

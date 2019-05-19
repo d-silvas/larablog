@@ -80,14 +80,19 @@ class Post extends Model
         $search = request()->query('search');
 
         if (empty($search)) {
-            return $query->published();
+            return $query;
         }
 
-        return $query->published()->where('title', 'LIKE', "%{$search}%");
+        return $query->where('title', 'LIKE', "%{$search}%");
     }
 
     public function scopePublished($query)
     {
         return $query->where('published_at', '<=', now());
+    }
+
+    public function isPublished()
+    {
+        return $this->published_at->isPast();
     }
 }
