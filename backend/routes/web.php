@@ -13,9 +13,10 @@ use \App\Http\Controllers\Blog\PostsController;
 */
 
 Route::get('/', 'WelcomeController@index')->name('public.welcome');
-Route::get('posts/{post}/{slug?}', [PostsController::class, 'show'])->name('public.show');
-Route::get('categories/{category}', [PostsController::class, 'category'])->name('public.category');
-Route::get('tag/{tag}', [PostsController::class, 'tag'])->name('public.tag');
+Route::get('/about-me', 'Blog\PagesController@aboutMe')->name('public.about-me');
+Route::get('posts/{post}/{slug?}', 'Blog\PostsController@show')->name('public.show');
+Route::get('categories/{category}', 'Blog\PostsController@category')->name('public.category');
+Route::get('tag/{tag}', 'Blog\PostsController@tag')->name('public.tag');
 
 Route::prefix('admin')->group(function() {
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');

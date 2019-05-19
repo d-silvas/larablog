@@ -16,7 +16,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('public.welcome') }}" class="nav-link">About me</a>
+                    <a href="{{ route('public.about-me') }}" class="nav-link">About me</a>
                 </li>
 
                 @auth
