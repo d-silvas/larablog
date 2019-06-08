@@ -5,6 +5,7 @@
     .jumbotron {
         background-image: url("{{ asset('storage/bg.jpeg') }}");
         height: 350px;
+        background-size: cover;
     }
     #about-me-face-img {
         border-radius: 50%;
@@ -18,12 +19,14 @@
 
 @section('content')
 <div class="jumbotron">
-    <div class="row d-flex flex-row px-4">
-        <div>
-            <img id="about-me-face-img" src="{{ asset('storage/face.jpg') }}">
-        </div>
-        <div id="about-me-name" class="align-self-end">
-            <h1>David Silva Sanmartin</h1>
+    <div class="container">
+        <div class="row d-sm-flex flex-row">
+            <div>
+                <img id="about-me-face-img" src="{{ asset('storage/face.jpg') }}">
+            </div>
+            <div id="about-me-name" class="align-self-end">
+                <h1>David Silva Sanmartin</h1>
+            </div>
         </div>
     </div>
 </div>
