@@ -1,3 +1,8 @@
 *
 !posts/
+!projects/
+!projects/*
+!bg.jpeg
+!face.jpg
+!ds.png
 !.gitignore

@@ -15,7 +15,6 @@
         a.btn-info, button.btn-info {
             color: #fff;
         }
-        /* Posts cards */
         .title-row a {
             font-weight: 600;
         }
@@ -44,31 +43,8 @@
 <body>
     <div id="app">
         @include('layouts.partials.navbar')
-
-        <main class="py-4">
-            @auth
-            <div class="main-content px-4 w-100 mx-auto">
-                @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
-                    </div>
-                @endif
-                @if(session()->has('error'))
-                    <div class="alert alert-danger">
-                        {{ session()->get('error') }}
-                    </div>
-                @endif
-                <div class="row">
-                    <div class="col-md-12">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-            @else
-            <div class="main-content px-4 w-100 mx-auto">
-                @yield('content')
-            </div>
-            @endauth
+        <main>
+            @yield('content')
         </main>
     </div>
 
