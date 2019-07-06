@@ -7,11 +7,15 @@
 @section('css')
 <style>
 .all-post-content {
-    max-width: 740px;
+    max-width: calc(740px + 4rem);
 }
 .author-row img {
     width: 50px;
     border-radius: 50%;
+}
+.post-username-col, .post-details-col {
+    height: 25px;
+    line-height: 25px;
 }
 .content-row {
     font-size: 18px;
@@ -20,69 +24,75 @@
 .post-img-row img {
     width: 100%;
 }
+.card {
+    padding: 2rem;
+}
 </style>
 @endsection
 
 @section('content')
 <div class="all-post-content mx-auto">
-    <div class="row">
-        <div class="col-12">
-            <h2>{{ $post->title }}</h2>
-        </div>
-    </div>
-    <div class="row pb-2">
-        <div class="col-12">
-            <h3 class="text-secondary">{{ $post->description }}</h3>
-        </div>
-    </div>
-    <div class="row author-row">
-        <div class="col-12 d-flex flex-row">
-            <div>
-                <img src="{{ Gravatar::src($post->user->email) }}" alt="" class="avatar avatar-sm">
+    <div class="card">
+        <div class="row">
+            <div class="col-12">
+                <h2>{{ $post->title }}</h2>
             </div>
-            <div>
-                <div class="row pl-2">
-                    <div class="col-12">
-                        {{ $post->user->name }}
-                    </div>
-                    <div class="col-12 text-secondary">
-                        <a href="{{ route('public.category', $post->category->id) }}" class="badge badge-primary">
-                            {{ $post->category->name }}
-                        </a>
-                        <span class="middot-divider"></span>
-                        {{ $post->published_at->format('d/m/Y') }}
-                        <span class="middot-divider"></span>
-                        4 min
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <h3 class="text-secondary">{{ $post->description }}</h3>
+            </div>
+        </div>
+        <div class="row author-row">
+            <div class="col-12 d-flex flex-row">
+                <div>
+                    <img src="{{ Gravatar::src($post->user->email) }}" alt="" class="avatar avatar-sm">
+                </div>
+                <div>
+                    <div class="row pl-2">
+                        <div class="col-12 post-username-col">
+                            {{ $post->user->name }}
+                        </div>
+                        <div class="col-12 text-secondary post-details-col">
+                            <a href="{{ route('public.category', $post->category->id) }}" class="badge badge-primary">
+                                {{ $post->category->name }}
+                            </a>
+                            <span class="middot-divider"></span>
+                            {{ $post->published_at->format('d/m/Y') }}
+                            <span class="middot-divider"></span>
+                            4 min
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row post-img-row py-4">
-        <div class="col-12">
-            <img src="{{ asset('storage/' . $post->image) }}">
+        <div class="row post-img-row py-4">
+            <div class="col-12">
+                <img src="{{ asset('storage/' . $post->image) }}">
+            </div>
+        </div>
+        
+        <div class="row content-row pb-2">
+            <div class="col-12">
+                {!! $post->content !!}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+            @foreach ($post->tags as $tag)
+                <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-dark">
+                    {{ $tag->name }}
+                </a>
+            @endforeach
+            </div>
         </div>
     </div>
-    
-    <div class="row content-row pb-2">
-        <div class="col-12">
-            {!! $post->content !!}
-        </div>
+    <br>
+    <br>
+    <div class="card pt-1 pb-0">
+        <div id="disqus_thread"></div>
     </div>
-    
-    <div class="row pb-4">
-        <div class="col-12">
-        @foreach ($post->tags as $tag)
-            <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-dark">
-                {{ $tag->name }}
-            </a>
-        @endforeach
-        </div>
-    </div>
-    
-    <hr>
-    
-    <div id="disqus_thread"></div>
 </div>
 
 <script>

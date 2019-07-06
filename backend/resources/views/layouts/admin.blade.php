@@ -15,18 +15,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        a.btn-info, button.btn-info {
-            color: #fff;
-        }
-    </style>
+    <link href="{{ asset('css/general.css') }}" rel="stylesheet">
     @yield('css')
 </head>
 <body>
     <div id="app">
         @include('layouts.partials.navbar')
  
-        <main class="py-4">
+        <main>
             @auth
             <div class="container">
                 @if(session()->has('success'))

@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background:
+        url("../storage/notebook.png"),
+        linear-gradient( rgba(255, 255, 255, 1) 33%, rgba(0, 0, 0, 1) 100%);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.card {
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.6);
+    border: 0;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+}
+
+a.btn-info, button.btn-info {
+    color: #fff;
+}
+
+/* Posts cards */
+.title-row a {
+    font-weight: 600;
+}
+.description-row {
+    color: grey;
+}
+.card-footer {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+}
+.card-footer a.badge {
+    font-size: 12px;
+}
+.middot-divider {
+    padding-right: .3em;
+    padding-left: .3em;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.middot-divider::after {
+    content: '\00B7';
+}

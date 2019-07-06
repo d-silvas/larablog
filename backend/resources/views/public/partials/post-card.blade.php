@@ -4,7 +4,7 @@
             <div class="col-12 col-sm-3">
                 <img src="{{ asset('storage/' . $post->image) }}" style="width:100%;">
             </div>
-            <div class="col-12 col-sm-9">
+            <div class="col-12 col-sm-9 pt-2 pt-sm-0">
                 <div class="row title-row">
                     <div class="col-12">
                         <h5>

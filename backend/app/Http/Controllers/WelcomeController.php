@@ -12,8 +12,8 @@ class WelcomeController extends Controller
     public function index()
     {
         return view('public.welcome')
-            ->with('categories', Category::all())
-            ->with('tags', Tag::all())
-            ->with('posts', Post::published()->searched()->orderBy('published_at', 'desc')->paginate(10));
+            ->with('categories', Category::take(20)->get())
+            ->with('tags', Tag::take(20)->get())
+            ->with('posts', Post::published()->searched()->orderBy('published_at', 'desc')->paginate(6));
     }
 }

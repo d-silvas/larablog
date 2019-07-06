@@ -11,43 +11,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        a.btn-info, button.btn-info {
-            color: #fff;
-        }
-        /* Posts cards */
-        .title-row a {
-            font-weight: 600;
-        }
-        .description-row {
-            color: grey;
-        }
-        .card-footer {
-            color: rgba(0, 0, 0, 0.54);
-            font-size: 14px;
-        }
-        .card-footer a.badge {
-            font-size: 12px;
-        }
-        .middot-divider {
-            padding-right: .3em;
-            padding-left: .3em;
-            font-size: 16px;
-            color: rgba(0, 0, 0, 0.54);
-        }
-        .middot-divider::after {
-            content: '\00B7';
-        }
-    </style>
+    <link href="{{ asset('css/general.css') }}" rel="stylesheet">
     @yield('css')
 </head>
 <body>
     <div id="app">
         @include('layouts.partials.navbar')
 
-        <main class="py-4">
+        <main>
             @auth
-            <div class="main-content px-4 w-100 mx-auto">
+            <div class="main-content w-100 mx-auto">
                 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{ session()->get('success') }}

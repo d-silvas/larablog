@@ -5,7 +5,12 @@
     .jumbotron {
         background-image: url("{{ asset('storage/bg.jpeg') }}");
         height: 350px;
+        border-radius: 0;
         background-size: cover;
+        padding: 1rem;
+    }
+    .jumbotron > .container, .jumbotron > .container > div.row {
+        height: 100%;
     }
     #about-me-face-img {
         border-radius: 50%;
@@ -21,11 +26,12 @@
 <div class="jumbotron">
     <div class="container">
         <div class="row d-sm-flex flex-row">
-            <div>
-                <img id="about-me-face-img" src="{{ asset('storage/face.jpg') }}">
+            <div class="d-flex flex-column">
+                <div class="flex-grow-1"></div>
+                <img id="about-me-face-img" class="align-self-end" src="{{ asset('storage/face.jpg') }}">
             </div>
             <div id="about-me-name" class="align-self-end">
-                <h1>David Silva Sanmartin</h1>
+                <h1>David Silva <span class="d-none d-sm-inline">Sanmartin</span></h1>
             </div>
         </div>
     </div>
