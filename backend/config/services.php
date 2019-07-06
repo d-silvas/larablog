@@ -46,5 +46,9 @@ return [
 
     'tinymce' => [
         'key' => env('TINYMCE_API_KEY'),
+    ],
+
+    'disqus' => [
+        'url' => env('DISQUS_EMBED_URL')
     ]
 ];
