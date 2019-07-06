@@ -27,6 +27,27 @@
 .card {
     padding: 2rem;
 }
+blockquote{
+  font-style: italic;
+  color: #555555;
+  padding: 1.25em 30px 1.2em 44px;
+  border-left: 8px solid #78C0A8 ;
+  position: relative;
+  background: #EDEDED;
+}
+blockquote::before{
+  font-family: Arial;
+  content: "\201C";
+  color: #78C0A8;
+  font-size: 4em;
+  position: absolute;
+  left: 5px;
+  top: -10px;
+}
+blockquote p {
+  color: #333333;
+  margin: 0;
+}
 </style>
 @endsection
 
