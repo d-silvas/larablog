@@ -134,6 +134,8 @@ tinymce.init({
     selector: '#content',
     plugins: 'codesample,mediaembed,code',
     extended_valid_elements: 'script[language|type|src]',
+    force_p_newlines : false,
+    forced_root_block: '',
     branding: false
 });
 </script>
