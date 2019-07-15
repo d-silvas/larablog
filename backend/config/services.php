@@ -54,5 +54,12 @@ return [
 
     'font-awesome' => [
         'kit' => env('FONTAWESOME_KIT')
+    ],
+
+    'social' => [
+        'linkedin' => env('SOCIAL_LINKEDIN'),
+        'github' => env('SOCIAL_GITHUB'),
+        'stack-overflow' => env('SOCIAL_STACK_OVERFLOW'),
+        'medium' => env('SOCIAL_MEDIUM'),
     ]
 ];

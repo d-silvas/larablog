@@ -30,6 +30,11 @@ FILESYSTEM_DRIVER=public
 TINYMCE_API_KEY=xyz
 DISQUS_EMBED_URL=https://qqq.disqus.com/embed.js
 FONTAWESOME_KIT=qqq
+
+SOCIAL_LINKEDIN=
+SOCIAL_GITHUB=
+SOCIAL_STACK_OVERFLOW=
+SOCIAL_MEDIUM=
 ```
 - Run `start.sh`, and, inside the container:
     - `composer install`

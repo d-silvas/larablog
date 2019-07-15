@@ -21,6 +21,24 @@
         color: white;
         text-shadow: 1px 1px #000000;
     }
+    i.fab {
+        font-size: 2.5rem;
+        margin: 0 1rem;
+        width: 40px;
+    }
+    .fa-linkedin {
+        color: #0077B5;
+    }
+    .fa-github, .fa-medium {
+        color: black;
+    }
+    .fa-stack-overflow {
+        color: white;
+        background: #FAC113;
+        border: 0;
+        border-radius: 3px;
+        text-align: center;
+    }
 </style>
 @endsection
 
@@ -39,10 +57,12 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"></a>
+    <div class="row mt-3 my-2">
+        <div class="col-12 text-center">
+                <a target="_blank" href="{{ config('services.social.linkedin') }}"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="{{ config('services.social.github') }}"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="{{ config('services.social.stack-overflow') }}"><i class="fab fa-stack-overflow"></i></a>
+                <a target="_blank" href="{{ config('services.social.medium') }}"><i class="fab fa-medium"></i></a>
         </div>
     </div>
     <div class="row">
