@@ -34,7 +34,7 @@
     </div>
     <div class="col-12">
     @foreach($tags as $tag)
-        <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-secondary">
+        <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-tag">
             {{ $tag->name }} ({{ $tag->postsPublished->count() }})
         </a>
     @endforeach
