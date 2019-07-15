@@ -24,7 +24,6 @@
  
         <main>
             @auth
-            <div class="container">
                 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{ session()->get('success') }}
@@ -36,7 +35,7 @@
                     </div>
                 @endif
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                         <ul class="list-group mb-4">
                             @if(auth()->user()->isAdmin())
                             <li class="list-group-item">
@@ -56,17 +55,16 @@
                             </li>
                         </ul>
 
-                        <ul class="list-group">
+                        <ul class="list-group mb-4">
                             <li class="list-group-item">
                                 <a href="{{ route('admin.trashed-posts.index')}}">Trashed Posts</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-lg-8">
                         @yield('content')
                     </div>
                 </div>
-            </div>
             @else
                 @yield('content')
             @endauth

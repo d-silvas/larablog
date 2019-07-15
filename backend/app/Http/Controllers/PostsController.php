@@ -21,8 +21,6 @@ class PostsController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -32,8 +30,6 @@ class PostsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -44,9 +40,6 @@ class PostsController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(CreatePostsRequest $request)
     {
@@ -64,7 +57,7 @@ class PostsController extends Controller
             'content' => $request->content,
             'image' => $image,
             'published_at' => $request->published_at,
-            'category_id' => $request->category,
+            'category_id' => $request->category_id,
             'user_id' => auth()->user()->id
         ]);
 
@@ -92,8 +85,6 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
     {
@@ -106,13 +97,10 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(UpdatePostsRequest $request, Post $post)
     {
-        $data = $request->only(['title', 'description', 'published_at', 'content']);
+        $data = $request->only(['title', 'description', 'content', 'published_at', 'category_id']);
 
         // Recalculate slug
         $data['slug'] = str_slug($data['title'], '-');
@@ -167,8 +155,6 @@ class PostsController extends Controller
 
     /**
      * Display a list of trashed posts
-     *
-     * @return \Illuminate\Http\Response
      */
     public function trashed()
     {
@@ -179,8 +165,6 @@ class PostsController extends Controller
 
     /**
      * Restore a trashed post
-     *
-     * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {

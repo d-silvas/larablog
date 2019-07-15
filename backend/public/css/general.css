@@ -69,3 +69,9 @@ nav.navbar {
 .middot-divider::after {
     content: '\00B7';
 }
+
+li.list-group-item,
+li.list-group-item:first-child,
+li.list-group-item:last-child {
+    border-radius: 0;
+}
