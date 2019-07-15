@@ -27,6 +27,11 @@
 .card {
     padding: 2rem;
 }
+@media screen and (max-width: 575px) {
+    .card {
+        padding: 1rem;
+    }
+}
 blockquote{
   font-style: italic;
   color: #555555;

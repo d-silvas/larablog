@@ -5,9 +5,7 @@ html, body {
 }
 
 body {
-    background:
-        url("../storage/notebook.png"),
-        linear-gradient( rgba(255, 255, 255, 1) 33%, rgba(0, 0, 0, 1) 100%);
+    background-color: #f4f4f4;
 }
 
 main {
@@ -16,9 +14,15 @@ main {
     padding: 1rem 1rem 2rem 1rem;
 }
 
+@media screen and (max-width: 575px) {
+    main {
+        padding: 1rem 0.5rem 2rem 0.5rem;
+    }
+}
+
 .card {
     border-radius: 0;
-    background: rgba(255, 255, 255, 0.6);
+    background: white;
     border: 0;
     -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
