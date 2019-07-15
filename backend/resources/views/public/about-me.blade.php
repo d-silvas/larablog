@@ -13,6 +13,8 @@
         height: 100%;
     }
     #about-me-face-img {
+        width: 240px;
+        height: 240px;
         border-radius: 50%;
     }
     #about-me-name {
@@ -23,7 +25,7 @@
 @endsection
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron mb-3">
     <div class="container">
         <div class="row d-sm-flex flex-row">
             <div class="d-flex flex-column">
@@ -37,6 +39,12 @@
     </div>
 </div>
 <div class="container">
+    <div class="row">
+        <div class="col-12">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"></a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <h2>Projects</h2>

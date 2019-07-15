@@ -50,5 +50,9 @@ return [
 
     'disqus' => [
         'url' => env('DISQUS_EMBED_URL')
+    ],
+
+    'font-awesome' => [
+        'kit' => env('FONTAWESOME_KIT')
     ]
 ];

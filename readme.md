@@ -28,7 +28,8 @@ SESSION_LIFETIME=120
 FILESYSTEM_DRIVER=public
 
 TINYMCE_API_KEY=xyz
-DISQUS_EMBED_URL=https://xxx.disqus.com/embed.js
+DISQUS_EMBED_URL=https://qqq.disqus.com/embed.js
+FONTAWESOME_KIT=qqq
 ```
 - Run `start.sh`, and, inside the container:
     - `composer install`
