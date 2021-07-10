@@ -79,7 +79,7 @@
 
             <div class="form-group">
                 <label for="category">Category</label>
-                <select name="category" id="category" class="form-control">
+                <select name="category_id" id="category" class="form-control">
                     @foreach($categories as $category)
                     <option
                         value="{{ $category->id }}"
@@ -134,6 +134,8 @@ tinymce.init({
     selector: '#content',
     plugins: 'codesample,mediaembed,code',
     extended_valid_elements: 'script[language|type|src]',
+    force_p_newlines : false,
+    forced_root_block: '',
     branding: false
 });
 </script>

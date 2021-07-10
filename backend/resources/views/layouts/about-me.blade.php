@@ -9,6 +9,9 @@
 
     <title>@yield('title')</title>
 
+    <!-- Font awesome icons -->
+    <script src="https://kit.fontawesome.com/{{ config('services.font-awesome.kit') }}.js"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/general.css') }}" rel="stylesheet">

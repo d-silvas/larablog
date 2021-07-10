@@ -38,7 +38,7 @@
                 </div>
             </div>
             @else
-            <div class="main-content px-4 w-100 mx-auto">
+            <div class="main-content w-100 mx-auto">
                 @yield('content')
             </div>
             @endauth

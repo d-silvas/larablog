@@ -27,6 +27,11 @@
 .card {
     padding: 2rem;
 }
+@media screen and (max-width: 575px) {
+    .card {
+        padding: 1rem;
+    }
+}
 blockquote{
   font-style: italic;
   color: #555555;
@@ -102,7 +107,7 @@ blockquote p {
         <div class="row">
             <div class="col-12">
             @foreach ($post->tags as $tag)
-                <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-dark">
+                <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-tag">
                     {{ $tag->name }}
                 </a>
             @endforeach

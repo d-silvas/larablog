@@ -6,11 +6,9 @@ Tag: {{ $tag->name }}
 
 @section('content')
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 col-md-9">
         <h3>Tag: {{ $tag->name }}</h3>
         <hr>
-    </div>
-    <div class="col-12 col-md-9">
         @include('public.partials.posts-list', ['posts' => $posts])
     </div>
 

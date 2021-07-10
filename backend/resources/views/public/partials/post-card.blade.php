@@ -19,6 +19,15 @@
                         <p class="card-text"> {{ $post->description }}</p>
                     </div>
                 </div>
+                <div class="row pt-2">
+                    <div class="col-12">
+                        @foreach($post->tags as $tag)
+                            <a href="{{ route('public.tag', $tag->id) }}" class="badge badge-tag">
+                                {{ $tag->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

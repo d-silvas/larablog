@@ -13,17 +13,37 @@
         height: 100%;
     }
     #about-me-face-img {
+        width: 240px;
+        height: 240px;
         border-radius: 50%;
     }
     #about-me-name {
         color: white;
         text-shadow: 1px 1px #000000;
     }
+    i.fab {
+        font-size: 2.5rem;
+        margin: 0 1rem;
+        width: 40px;
+    }
+    .fa-linkedin {
+        color: #0077B5;
+    }
+    .fa-github, .fa-medium {
+        color: black;
+    }
+    .fa-stack-overflow {
+        color: white;
+        background: #FAC113;
+        border: 0;
+        border-radius: 3px;
+        text-align: center;
+    }
 </style>
 @endsection
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron mb-3">
     <div class="container">
         <div class="row d-sm-flex flex-row">
             <div class="d-flex flex-column">
@@ -37,6 +57,14 @@
     </div>
 </div>
 <div class="container">
+    <div class="row mt-3 my-2">
+        <div class="col-12 text-center">
+                <a target="_blank" href="{{ config('services.social.linkedin') }}"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="{{ config('services.social.github') }}"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="{{ config('services.social.stack-overflow') }}"><i class="fab fa-stack-overflow"></i></a>
+                <a target="_blank" href="{{ config('services.social.medium') }}"><i class="fab fa-medium"></i></a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <h2>Projects</h2>
